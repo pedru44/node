@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+
 app.get('/', function (req, res) {
     res.send('Rota Principal')
 })
@@ -33,7 +36,7 @@ app.get('/lista1/ex1', function (req, res) {
     res.send('Lista 1 --> Ex1')
 })
 
-app.get('/lista1/ex2', function (req, res) {
+app.post('/lista1/ex2', function (req, res) {
 
     const total = 400
     const brancos = 100
