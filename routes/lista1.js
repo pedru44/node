@@ -50,5 +50,83 @@ router.post('/ex2', function (req, res) {
 
 })
 
+router.post('/ex3', function (req, res) {
+
+
+    const { salario, percentual } = req.body
+    const aumento = (percentual / 100) * 100
+    const novoSalario = Number(salario) + Number(aumento)
+
+    res.json({ novoSalario })
+
+})
+
+router.post('/ex4', function (req, res) {
+
+    const carro = Number(req.body.carro)
+    const percentualDistribuidor = (28 / 100) * carro;
+    const percentualImpostos = (45 / 100) * carro;
+    const valorFinal = carro + percentualDistribuidor + percentualImpostos;
+
+    res.json({ valorFinal })
+
+})
+
+router.post('/ex5', function (req, res) {
+
+    const { carro, distribuidor, imposto } = req.body
+
+    const valorDistribuidor = (distribuidor / 100) * carro;
+    const valorImposto = (imposto / 100) * carro;
+    const valorFinal = Number(carro) + Number(valorDistribuidor) + Number(valorImposto);
+
+    res.json({ valorFinal })
+
+})
+
+router.post('/ex6', function (req, res) {
+
+    const { salarioFixo, carros, comissao, vendas } = req.body
+
+    const comissaoCarros = carros * comissao
+    const comissaoVendas = (5 / 100) * vendas
+
+    const total = Number(salarioFixo) + Number(comissaoCarros) + Number(comissaoVendas)
+
+    res.json({ total })
+})
+
+router.post('/ex7', function (req, res) {
+
+    const { n1, n2 } = req.body
+
+    const mediaFinal = (n1 * 4 + n2 * 6) / 10
+
+    res.json({ mediaFinal })
+})
+
+router.post('/ex8', function (req, res) {
+
+    const { raio, altura } = req.body
+
+    const raioQuadrado = raio * raio;
+    const pi = 3.14;
+    const volume = pi * raioQuadrado * altura;
+
+    res.json({ volume })
+})
+
+router.post('/ex9', function (req, res) {
+
+    const { n1, n2 } = req.body
+
+    const soma = Number(n1) + Number(n2);
+
+    const final = soma * n1;
+
+
+    res.json({ final })
+})
+
 module.exports = router
 
