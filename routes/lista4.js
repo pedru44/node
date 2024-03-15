@@ -27,7 +27,7 @@ router.post('/ex1', function (req, res) {
     res.json({media})
 })
 
-router.post('/ex8', function (req, res) { 
+/* router.post('/ex8', function (req, res) { 
 
     let soma = 0
     for(let n of numeros){
@@ -36,6 +36,7 @@ router.post('/ex8', function (req, res) {
         }
 
     res.json({soma})
-})
+}) */
 
 module.exports = router
+
