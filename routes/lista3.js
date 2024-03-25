@@ -77,4 +77,35 @@ router.post('/ex4', function (req, res) {
 
 })
 
+router.post('/ex5', function (req, res) {
+
+    const { idAluno, nota1, nota2, nota3, mediaQercicios } = req.body;
+
+    const mediaAproveitamento = (nota1 + nota2 * 2 + nota3 * 3 + mediaQercicios) / 7;
+
+    let conceito;
+    if (mediaAproveitamento >= 9.0) {
+        conceito = 'A';
+    } else if (mediaAproveitamento >= 7.5) {
+        conceito = 'B';
+    } else if (mediaAproveitamento >= 6.0) {
+        conceito = 'C';
+    } else if (mediaAproveitamento >= 4.0) {
+        conceito = 'D';
+    } else {
+        conceito = 'E';
+    }
+
+    let mensagem;
+    if (conceito === 'A' || conceito === 'B' || conceito === 'C') {
+        mensagem = 'Aprovado!';
+    } else {
+        mensagem = 'Reprovado!';
+    }
+
+    res.json({idAluno, nota1, nota2, nota3,mediaQercicios, mediaAproveitamento,conceito, mensagem
+    })
+})
+
+
 module.exports = router
