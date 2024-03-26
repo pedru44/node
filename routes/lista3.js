@@ -143,6 +143,41 @@ router.post('/ex7', function (req, res) {
     res.json({ somaDosMaiores })
 })
 
+router.post('/ex8', function (req, res) {
+
+    const { salarioAtual, codigoCargo } = req.body;
+
+    let salarioNovo;
+    let diferenca;
+
+    if (codigoCargo != 101 && codigoCargo != 102 && codigoCargo != 103 ) {
+        return res.json({ message: 'Código inválido' });
+    } else {
+
+        switch (codigoCargo) {
+
+            case 101:
+                salarioNovo = salarioAtual * 1.05;
+                break;
+
+            case 102:
+                salarioNovo = salarioAtual * 1.075;
+                break;
+
+            case 103:
+                salarioNovo = salarioAtual * 1.1;
+                break;
+
+            default:
+                salarioNovo = salarioAtual * 1.15;
+        }
+    }
+
+    diferenca = salarioNovo - salarioAtual;
+
+    res.json({ salarioAntigo: salarioAtual, salarioNovo, diferenca });
+});
+
 
 
 module.exports = router
